@@ -2,9 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <link type="text/css" rel="stylesheet" href="styles.css"/>
+    <script src="sales.js"></script>
+    <title>Salmon Cookies</title>
   </head>
+  <header>
+    <img src="salmon.png" alt="Image of a salmon">
+  </header>
   <body>
+    <table class="storeManView">
+      <tbody>
+        <thead>rm 
+          <th>
+            <td>
+
+            </td>
+          </th>
+        </thead>
+      </tbody>
+    </table>
+    <form id="newStoreInputForm">
+      <fieldset>
+        <legend>Input New Store Information:</legend>
+        New Store Name: <input type="text" placeholder="Enter Store Name here" name="newStoreName" required><br/>
+        New Minimum Customers per Hour: <input type="text" placeholder="Min customers per hour" name="newMinCust" required><br/>
+        New Maximum Customers per Hour: <input type="text" placeholder="Max customers per hour" name="newMaxCust" required><br/>
+        New Average Sales per Hour: <input type="text" placeholder="Avg cookies sold per hour" name="newAvgSales" required><br/>
+        <input type="submit" value="submit"/>
+      </fieldset>
+    </form>
   </body>
-  <script type="text/javascript" src="app.js"></script>
-</html>
+  <footer>
+  </footer>
