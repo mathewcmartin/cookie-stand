@@ -1,3 +1,17 @@
+
+
+
+fieldset {
+  max-width: 75%;
+}
+img {
+  max-width: 75%;
+}
+body {
+  background-color: #E88DAD;
+}
+
+/*
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -16,6 +30,11 @@ h1{
 h4{
   font-family: 'Ubuntu', sans-serif;
   text-align: center;
+}
+ul {
+  list-style-image: url("#");
+
+
 }
 
 body {
@@ -54,3 +73,4 @@ footer {
   clear: both;
 
 }
+*/

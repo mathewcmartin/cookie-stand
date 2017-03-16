@@ -6,9 +6,9 @@ var storeList = [];
 var body = document.getElementsByTagName('body')[0];
 
 function StoreName(sName, minCust, maxCust, avgSales) {
-  this.store = sName;
-  this.minCust = minCust;
-  this.maxCust = maxCust;
+  this.store = (sName);
+  this.minCust = Math.floor(minCust);
+  this.maxCust = Math.floor(maxCust);
   this.avgSales = avgSales;
   this.hourlySalesArr = [];
   this.randomCust = function(){
@@ -60,17 +60,63 @@ function renderHTML () {
     tblHead.innerText = storeHours[i];
     thead.appendChild(tblHead);
   }
+  renderHTML();
+};/*
+var newStoreForm = document.getElementById('newStoreInputForm');
+function newStoreName(event){
+  event.preventDefault();
+  var storeEntryForm = event.target;
+  console.log(storeEntryForm);
+  var newStoreName = storeEntryForm.elements['sName'].value;
+  console.log(newStoreName);
+  var newMinCustValues = storeEntryForm.elements['minCust'].value;
+  var newMaxCustValues = storeEntryForm.elements['maxCust'].value;
+  var newAvgSalesValues = storeEntryForm.elements['avgSales'].value;
+  document.getElementById('newStoreInputForm').reset();
+}
+newStoreForm.addEventListener('submit', newStoreName);
+  /*
+sName, minCust, maxCust, avgSales
+'use strict';
+
+var form = document.getElementById('the-form');
+function alertTheUser(event){
+  event.preventDefault(); // stops the form from submitting and leaving the page.
+  // time for the harvest
+  var theFormItself = event.target;
+  // the "elements" attribute of the event.target object holds (for a form) all of the form fields by name
+  console.log(theFormItself.elements['firstname'].value);
 };
+form.addEventListener('submit', alertTheUser);
 
-renderHTML();
+var firstname = document.getElementById('firstname');
+function capitalizeEverything(event){
+  // var theText = this.value;
+  this.value = "You've focused on me!";
+  console.log(this);
+  console.log(event.target);
+}
+firstname.addEventListener('focus', capitalizeEverything);
 
+  document.getElementById('newStoreName')
+  document.getElementById('newMinCust')
+  document.getElementById('newMaxCust')
+  document.getElementById('newAvgSales')
+}
+
+
+document.getElementById('form1').addEventListener('submit', function(evt){
+    evt.preventDefault();
+
+
+
+/*
 var firstnpike = new StoreName('1st and Pike', 23, 65, 6.3);
 var seatacAirport = new StoreName('SeaTac Airport', 3, 24, 1.2);
 var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
 var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
 var alki = new StoreName('Alki', 2, 16, 4.6);
 
-/*
 firstnpike.createListItems();
 seatacAirport.createListItems();
 seattleCenter.createListItems();
