@@ -10,50 +10,52 @@ var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
 var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
 var alki = new StoreName('Alki', 2, 16, 4.6);
 
-var body = document.getElementsByTagName('body')[0];
-
-function StoreName(sName, minCust, maxCust, avgSales) {
-  this.store = sName;
+function StoreName(name, minCust, maxCust, avgSales) {
+  this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgSales = avgSales;
   this.hourlySalesArr = [];
   this.randomCust = function(){
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
-    console.log(this.randomCust);
   };
-  this.storeSales = function(){
+  this.storeSales = function() {
     var total = 0;
     for (var i = 0; i < storeHours.length - 1; i++){
-      var cookiesHourly = Math.floor(this.randomCust * this.avgSales);
+      var cookiesHourly = Math.floor(this.randomCust() * this.avgSales);
       this.hourlySalesArr.push(cookiesHourly);
       total += cookiesHourly;
-      console.log(cookiesHourly);
-      console.log('this.storeSales');
+      console.log(this.cookiesHourly);
     }
     this.hourlySalesArr.push(total);
     console.log(this.hourlySalesArr);
   };
+//  this.storeSales();
   this.createTblFunc = function(){
-    this.storeSales();
-    var tbody = document.getElementsByTagName('tbody')[0];
+    var body = document.getElementById('body');
+    console.log(body);
+    var table = document.createElement('table');
+    var tbody = document.createElement('tbody');
     var tr = document.createElement('tr');
-    tbody.appendChild(tr);
-    var tblData = document.createElement('td');
-    tr.appendChild(tblData);
-    tblData.innerText = this.store;
+  //    td.innerText = this.name;
     for (var i = 0; i < storeHours.length; i++){
       var td = document.createElement('td');
       td.innerText = this.hourlySalesArr[i];
       tr.appendChild(td);
     }
-    tblData.appendChild(tbody);
+    tbody.appendChild(tr);
+    table.appendChild(tbody);
+    body.appendChild(table);
   };
+  this.storeSales();
+  this.createTblFunc();
   storeList.push(this);
+
 }
 
+/*
 function renderHTML() {
-  var table = document.createElement('table');
+  var table = document.createElement('table')[0];
   body.appendChild(table);
   var thead = document.createElement('thead');
   table.appendChild(thead);
@@ -62,7 +64,7 @@ function renderHTML() {
   var tr = document.createElement('tr');
   table.appendChild(tr);
   var td = document.createElement('td');
-  td.innerText = 'StoreName';
+  td.innerText = StoreName;
   thead.appendChild(td);
   for(var i = 0; i < storeHours.length; i++) {
     var tblHead = document.createElement('th');
@@ -70,34 +72,38 @@ function renderHTML() {
     thead.appendChild(tblHead);
   }
   renderHTML();
-};
+};*/
 var newStoreForm = document.getElementById('newStoreInputForm');
 function newStoreName(event){
   event.preventDefault();
   var storeEntryForm = event.target;
+  //Amanda's   var name = event.target.elements.storeName.value;
   console.log('storeEntryForm');
-  var newStoreName = storeEntryForm.elements['sName'].value;
+  var newStoreName = storeEntryForm.elements['formButton'].value;
+  //var name = event.target.elements.minCust.value
   console.log('newStoreForm logic');
   var newMinCustValues = storeEntryForm.elements['minCust'].value;
   var newMaxCustValues = storeEntryForm.elements['maxCust'].value;
   var newAvgSalesValues = storeEntryForm.elements['avgSales'].value;
-  form.getElementById('newStoreInputForm').reset();
+  form.reset();
+  button.addEventListener('submit', newStoreName);
 }
-document.addEventListener('submit', newStoreName);
+//var newStoreName = event.target
 
-/*
 document.getElementsByTagName('newStoreName');
 document.getElementsByTagName('newMinCust');
 document.getElementsByTagName('newMaxCust');
 document.getElementsByTagName('newAvgSales');
-
 /*
+
+event.addEventListener('submit', newStoreName);
+
 var newStoreForm = form.getElementById('newStoreInputForm');
 function newStoreName(event){
   event.preventDefault();
   var storeEntryForm = event.target;
   console.log(storeEntryForm);
-  var newStoreName = storeEntryForm.elements['sName'].value;
+  var newStoreName = storeEntryForm.elements['name'].value;
   console.log(newStoreName);
   var newMinCustValues = storeEntryForm.elements['minCust'].value;
   var newMaxCustValues = storeEntryForm.elements['maxCust'].value;
@@ -106,7 +112,7 @@ function newStoreName(event){
 }
 newStoreForm.addEventListener('submit', newStoreName);
   /*
-sName, minCust, maxCust, avgSales
+name, minCust, maxCust, avgSales
 'use strict';
 
 var form = form.getElementById('the-form');
