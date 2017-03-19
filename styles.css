@@ -2,27 +2,142 @@
 html {
   background: -moz-linear-gradient(top,  #febbbb 0%, #fe9090 45%, #ff5c5c 100%); /* FF3.6-15 */
 /*  background: -webkit-linear-gradient(top,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=0 ); /* IE6-9 */
-  background-repeat: no-repeat;
+  /*background: linear-gradient(to bottom,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */*/
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=0 ); /* IE6-9 */*/
+  /*background-repeat: no-repeat;*/
 }
-
+header {
+}
+section {
+  margin-left: 15%;
+}
+#salmon {
+  max-width: 75%;
+  background: rgb(252,255,244);
+  background: -moz-radial-gradient(center, ellipse cover,  rgba(252,255,244,1) 0%, rgba(223,229,215,1) 40%, rgba(179,190,173,1) 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
+  background: radial-gradient(ellipse at center,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=1 );
+}
 fieldset {
   max-width: 75%;
 }
 img {
   max-width: 75%;
+  margin-left: 12.5%;
 }
 body {
-
+  font-family: cursive, sans-serif;
+  max-width: 90%;
+  height: auto;
   border: 2px
-
 }
 table {
+  background: -webkit-linear-gradient(#febbbb 0%, #fe9090 45%, #ff5c5c 100%);
+  background: -o-linear-gradient(#febbbb 0%, #fe9090 45%, #ff5c5c 100%);
+  background: linear-gradient(#febbbb 0%, #fe9090 45%, #ff5c5c 100%);
+  background: linear-gradient(to bottom,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=0 );
+  display: table;
+  table-layout: fixed;
+  border-spacing: 0.5rem;
+  border-collapse: collapse;
+  margin-left: 20%;
+  margin-top: 1px;
+  width: 65%;
+  vertical-align: bottom;
+  height: 35px;
   padding: 30px;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: cursive, sans-serif;
+  border-color: #000;
   clear: both;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: #000;
+}
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tfoot {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tr {
+  height: 35px;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+col {
+  display: table-column;
+}
+colgroup {
+  display: table-column-group;
+}
+th {
+}
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  text-align: center;
+  padding: 0.15rem;
+  border: 1px solid #ccc;
+  vertical-align: bottom;
+  border: 1px solid #999;
+  padding: 10px;
+}
+#hrLine {
+  margin-left: 15%;
+  height: 35px;
+  max-width: 75%;
+  background: rgb(254,187,187); /* Old browsers */
+  background: -moz-linear-gradient(45deg,  rgba(254,187,187,1) 0%, rgba(254,144,144,1) 45%, rgba(255,92,92,1) 100%);
+  background: -webkit-linear-gradient(45deg,  rgba(254,187,187,1) 0%,rgba(254,144,144,1) 45%,rgba(255,92,92,1) 100%);
+  background: linear-gradient(45deg,  rgba(254,187,187,1) 0%,rgba(254,144,144,1) 45%,rgba(255,92,92,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 );
+}
+#tempBookmark-1 {
+  text-align: center;
+  max-width: 100%;
+  height: 100px;
+}
+form {
+  font-family: cursive, sans-serif;
+  margin-left: 37.5%;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  font:100%/1 cursive, sans-serif;
+}
+#newStoreInputForm {
+    font:100%/1 cursive, sans-serif;
+    font-family: cursive, sans-serif;
+}
+fieldset {
+  padding: 1em;
+  font:100%/1 cursive, sans-serif;
+  }
+button {
+  font:100%/1 cursive, sans-serif;
+}
+label {
+  float:left;
+  width:25%;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:right;
+  font-weight:bold;
+  font:100%/1 cursive, sans-serif;
+  }
+caption {
+  display: table-caption;
+  text-align: center;
+  font:100%/1 cursive, sans-serif;
 }
 footer {
   padding: 30px;
@@ -30,6 +145,7 @@ footer {
   font-family: 'Open Sans', sans-serif;
   color: 	#C0C0C0;
   clear: both;
+}
 /*
 html {
   line-height: 1.15;

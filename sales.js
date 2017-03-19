@@ -50,10 +50,23 @@ function StoreName(name, minCust, maxCust, avgSales) {
   this.storeSales();
   this.createTblFunc();
   storeList.push(this);
-
 }
 
-/*
+
+/*//Render Function
+
+example:
+function myFunction() {
+    var x = document.createElement("FIELDSET");
+    var t = document.createTextNode("Insert content here...");
+    x.appendChild(t);
+    document.body.appendChild(x);
+}
+document.getElementsByTagName('newStoreName');
+document.getElementsByTagName('newMinCust');
+document.getElementsByTagName('newMaxCust');
+document.getElementsByTagName('newAvgSales');
+
 function renderHTML() {
   var table = document.createElement('table')[0];
   body.appendChild(table);
@@ -72,7 +85,9 @@ function renderHTML() {
     thead.appendChild(tblHead);
   }
   renderHTML();
-};*/
+};
+
+
 var newStoreForm = document.getElementById('newStoreInputForm');
 function newStoreName(event){
   event.preventDefault();
@@ -90,14 +105,9 @@ function newStoreName(event){
 }
 //var newStoreName = event.target
 
-document.getElementsByTagName('newStoreName');
-document.getElementsByTagName('newMinCust');
-document.getElementsByTagName('newMaxCust');
-document.getElementsByTagName('newAvgSales');
+
 /*
-
 event.addEventListener('submit', newStoreName);
-
 var newStoreForm = form.getElementById('newStoreInputForm');
 function newStoreName(event){
   event.preventDefault();
@@ -114,7 +124,6 @@ newStoreForm.addEventListener('submit', newStoreName);
   /*
 name, minCust, maxCust, avgSales
 'use strict';
-
 var form = form.getElementById('the-form');
 function alertTheUser(event){
   event.preventDefault(); // stops the form from submitting and leaving the page.
@@ -124,7 +133,6 @@ function alertTheUser(event){
   console.log(theFormItself.elements['firstname'].value);
 };
 form.addEventListener('submit', alertTheUser);
-
 var firstname = form.getElementById('firstname');
 function capitalizeEverything(event){
   // var theText = this.value;
@@ -133,29 +141,24 @@ function capitalizeEverything(event){
   console.log(event.target);
 }
 firstname.addEventListener('focus', capitalizeEverything);
-
   form.getElementById('newStoreName')
   form.getElementById('newMinCust')
   form.getElementById('newMaxCust')
   form.getElementById('newAvgSales')
 }
-
 form.getElementById('form1').addEventListener('submit', function(evt){
     evt.preventDefault();
-
 /*
 var firstnpike = new StoreName('1st and Pike', 23, 65, 6.3);
 var seatacAirport = new StoreName('SeaTac Airport', 3, 24, 1.2);
 var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
 var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
 var alki = new StoreName('Alki', 2, 16, 4.6);
-
 firstnpike.createListItems();
 seatacAirport.createListItems();
 seattleCenter.createListItems();
 capitolHill.createListItems();
 alki.createListItems();
-
 var seatacAirport = {
   storeName: 'SeaTac Airport',
   minCust: 3,
@@ -184,7 +187,6 @@ for (var i = 0; i < storeHours.length; i++){
   firstlistItem.textContent = seatacAirport[1];
 };
 body.appendChild(firstList);
-
 var seattleCenter = {
   storeName: 'Seattle Center',
   minCust: 11,
@@ -213,7 +215,6 @@ for (var i = 0; i < storeHours.length; i++){
   firstlistItem.textContent = seattleCenter[1];
 };
 body.appendChild(firstList);
-
 var capitolHill = {
   storeName: 'Capitol Hill',
   minCust: 20,
@@ -242,7 +243,6 @@ for (var i = 0; i < storeHours.length; i++){
   firstlistItem.textContent = capitolHill[1];
 };
 body.appendChild(firstList);
-
 var alki = {
   storeName: 'Alki',
   minCust: 2,
@@ -271,5 +271,4 @@ for (var i = 0; i < storeHours.length; i++){
   firstlistItem.textContent = alki[1];
 };
 form.body.appendChild(firstList);
-
 */
