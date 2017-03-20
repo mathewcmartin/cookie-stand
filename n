@@ -1,0 +1,154 @@
+b993b0e1 app.js   (Mathew C Martin   2017-03-13 17:28:56 -0700   1) 'use strict';
+b993b0e1 app.js   (Mathew C Martin   2017-03-13 17:28:56 -0700   2) 
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700   3) var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'total'];
+c60d2346 app.js   (Mathew C Martin   2017-03-13 23:49:31 -0700   4) 
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700   5) var storeList = [];
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700   6) 
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700   7) var firstnpike = new StoreName('1st and Pike', 23, 65, 6.3);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700   8) var seatacAirport = new StoreName('SeaTac Airport', 3, 24, 1.2);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700   9) var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  10) var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  11) var alki = new StoreName('Alki', 2, 16, 4.6);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  12) 
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  13) function StoreName(name, minCust, maxCust, avgSales) {
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  14)   this.name = name;
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  15)   this.minCust = minCust;
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  16)   this.maxCust = maxCust;
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  17)   this.avgSales = avgSales;
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  18)   this.hourlySalesArr = [];
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  19)   this.randomCust = function(){
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  20)     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  21)   };
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  22)   this.storeSales = function() {
+b993b0e1 app.js   (Mathew C Martin   2017-03-13 17:28:56 -0700  23)     var total = 0;
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  24)     for (var i = 0; i < storeHours.length - 1; i++){
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  25)       var cookiesHourly = Math.floor(this.randomCust() * this.avgSales);
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  26)       this.hourlySalesArr.push(cookiesHourly);
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  27)       total += cookiesHourly;
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  28)       console.log(this.cookiesHourly);
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  29)     }
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  30)     this.hourlySalesArr.push(total);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  31)     console.log(this.hourlySalesArr);
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  32)   };
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  33)   this.createTblFunc = function(){
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  34)     var body = document.getElementById('body');
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  35)     var table = document.createElement('table');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  36)     var thead = document.createElement('thead');
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  37)     var tr = document.createElement('tr');
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  38)     for (var i = 0; i < storeHours.length; i++){
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  39)       var td = document.createElement('td');
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  40)       td.innerText = this.hourlySalesArr[i];
+776e4c19 app.js   (Mathew C Martin   2017-03-14 23:51:15 -0700  41)       tr.appendChild(td);
+b993b0e1 app.js   (Mathew C Martin   2017-03-13 17:28:56 -0700  42)     }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  43)     thead.appendChild(tr);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  44)     table.appendChild(thead);
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  45)     body.appendChild(table);
+bb5630cb sales.js (Mathew C Martin   2017-03-15 22:45:54 -0700  46)   };
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  47)   this.storeSales();
+8cdd45a6 sales.js (Mathew C Martin   2017-03-16 21:18:55 -0700  48)   this.createTblFunc();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  49)   storeList.push(this);
+2cfa4eb6 sales.js (Mathew C Martin   2017-03-19 15:39:24 -0700  50) }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  51) this.newTblRow = function() {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  52)   this.storeSales();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  53)   var table = document.getElementById('table');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  54)   var tr = document.createElement('tr');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  55)   var tbody = document.getElementById('tbody');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  56)   tbody.appendChild(tr);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  57)   var newStoreName = document.createElement('th');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  58)   newStoreName.innerText = this.name;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  59)   tr.appendChild(newStoreName);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  60) 
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  61)   for (var i = 0; i < storeHours.length - 2; i++) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  62)     var newTd = document.createElement('td');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  63)     newTd.innerText = this.hourlySalesArr[i];
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  64)     tr.appendChild(newTd);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  65)   };
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  66)   storeList.push(this);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  67) };
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  68) //appended code from code review.
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  69) function createTable() {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  70)   var table = document.createElement('table');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  71)   div.appendChild(table);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  72)   table.id = 'bodyTable';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  73)   var thead = document.createElement('thead');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  74)   table.appendChild(thead);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  75)   var tr = document.createElement('tr');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  76)   thead.appendChild(tr);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  77)   for (var i = 0; i < hours.length - 1; i++) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  78)     var th = document.createElement('th');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  79)     th.innerText = hours[i];
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  80)     tr.appendChild(th);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  81)   }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  82)   var th = document.createElement('th');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  83)   th.innerText = hours[i];
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  84)   tr.appendChild(th);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  85)   var tbody = document.createElement('tbody');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  86)   table.appendChild(tbody);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  87)   tbody.id = 'tableBody';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  88)   var tfoot = document.createElement('tfoot');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  89)   table.appendChild(tfoot);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  90)   tfoot.id = 'tableFoot';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  91) };
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  92) createTable();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  93) 
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  94) function hourlySalesTotal() {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  95)   var table = document.getElementById("bodyTable");
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  96)   var tfoot = document.getElementById('tableFoot');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  97)   table.appendChild(tfoot);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  98)   var tr = document.createElement('tr');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700  99)   tfoot.appendChild(tr);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 100)   tr.id = 'totalsRow';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 101)   var th = document.createElement('th');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 102)   th.innerText = 'Total';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 103)   tr.appendChild(th);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 104)   for (var i = 0; i < hours.length - 2; i++) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 105)     var hrlyTotal = 0;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 106)     for (var x = 0; x < allStores.length; x++) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 107)       hrlyTotal += allStores[x].salesArray[i];
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 108)     }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 109)     var footTD = document.createElement('td');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 110)     footTD.innerText = hrlyTotal;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 111)     footTD.style.backgroundColor = '#40B27C';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 112)     tr.appendChild(footTD);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 113)   }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 114)   // For adding that last cell of the total of totals
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 115)   var totalTotal = 0;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 116)   for (var i = 0; i < allStores.length; i++) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 117)     totalTotal += allStores[i].total;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 118)   }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 119)   var totalTd = document.createElement('td');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 120)   totalTd.innerText = totalTotal;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 121)   totalTd.style.backgroundColor = '#40B27C';
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 122)   tr.appendChild(totalTd);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 123) };
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 124) // hourlyStoresTotal(); // this was in the wrong place
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 125) 
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 126) for (var i = 0; i < allStores.length; i++) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 127)   allStores[i].generateTableRow();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 128) }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 129) hourlyStoresTotal(); // moved it down here, so that it executes AFTER sales are generated above.
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 130) 
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 131) var elStoreForm = document.getElementById('newStoreForm');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 132) 
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 133) function submitButton(event) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 134)   event.preventDefault();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 135)   var newStoreForm = event.target;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 136)   var strLoc = event.target.newStoreName;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 137)   var minCst = event.target.newMinCust;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 138)   var maxCst = event.target.newMaxCust;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 139)   var avgCook = event.target.newAvgSales;
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 140)   if (minCst > maxCst) {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 141)     alert('Please double check the number values for accuracy and re-submit the form. Thank you.');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 142)   } else {
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 143)     var formVariables = new CreateStore(strLoc.value, minCst.value, maxCst.value, avgCook.value);
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 144)     formVariables.generateTableRow();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 145)     // making sure we add appropriate totals
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 146)     var tfoot = document.getElementById('tableFoot');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 147)     var totalsRow = document.getElementById('totalsRow');
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 148)     tfoot.removeChild(totalsRow); // first remove the existing totals row
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 149)     hourlyStoresTotal(); // then append a new, updated totals row
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 150)   }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 151)   elStoreForm.reset();
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 152) }
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 153) 
+00000000 sales.js (Not Committed Yet 2017-03-19 23:20:22 -0700 154) elStoreForm.addEventListener('submit',submitButton);
