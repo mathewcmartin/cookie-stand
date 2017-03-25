@@ -50,6 +50,7 @@ table {
   padding: 30px;
   text-align: center;
   font-family: cursive, sans-serif;
+  font-size: .7em;
   border-color: #000;
   clear: both;
 }
@@ -114,7 +115,7 @@ form {
   margin-bottom: 25px;
   font:100%/1 cursive, sans-serif;
 }
-#newStoreInputForm {
+#newStoreForm {
     font:100%/1 cursive, sans-serif;
     font-family: cursive, sans-serif;
 }
