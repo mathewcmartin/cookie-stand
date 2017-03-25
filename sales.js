@@ -9,7 +9,7 @@ var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
 var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
 var alki = new StoreName('Alki', 2, 16, 4.6);
 
-var body = document.getElementByTagName('body')[0]; // CHECK D.Lim html ********** why TAG?
+var body = document.getElementsByTagName('body')[0]; // CHECK D.Lim html ********** why TAG?
 var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
@@ -28,16 +28,14 @@ function StoreName(name, minCust, maxCust, avgCookies) {
       var cookiesHourly = Math.floor(this.randCust() * this.avgCookies);
       this.salesArr.push(cookiesHourly);
       total += cookiesHourly;
-      console.log(this.cookiesHourly);
     }
     this.salesArr.push(total);
-    console.log(this.salesArr);
   };
   this.generateTableRow = function(){
     this.storeSales();
     var tr = document.createElement('tr');
     tbody.appendChild(tr);
-    var tData = document.createElement('td')
+    var tData = document.createElement('td');
     tr.appendChild(tData);
     tData.innerText = this.name;
     for (var i = 0; i < storeHours.length; i++){
@@ -61,113 +59,52 @@ function renderHeader (){
   blank.innerText = 'Store Name';
   for (var i = 0; i < storeHours.length; i++){
     var th = document.createElement('th');
-    th.innerText = storeHours[i]
+    th.innerText = storeHours[i];
     thead.appendChild(th);
   }
 };
+
 for (var i = 0; i < storeList.length; i++){
   storeList[i].generateTableRow();
 }
-// this.newTblRow = function() {
-//   this.storeSales();
-//   var tr = document.createElement('tr');
-//   var tbody = document.getElementById('tbody');
-//   tbody.appendChild(tr);
-//   var newStoreName = document.createElement('th');
-//   newStoreName.innerText = this.name;
-//   tr.appendChild(newStoreName);
-//
-//   for (var i = 0; i < storeHours.length - 2; i++) {
-//     var newTd = document.createElement('td');
-//     newTd.innerText = this.salesArr[i];
-//     tr.appendChild(newTd);
-//   };
-//   storeList.push(this);
-// };
-//appended code from code review. Cite Nick and Michael's work.
-function createTable() {
-  var table = document.createElement('table');
-  .appendChild(table);
-  table.id = 'bodyTable';
-  var thead = document.createElement('thead');
-  table.appendChild(thead);
-  var tr = document.createElement('tr');
-  thead.appendChild(tr);
-  for (var i = 0; i < hours.length - 1; i++) {
-    var th = document.createElement('th');
-    th.innerText = hours[i];
-    tr.appendChild(th);
-  }
-  var th = document.createElement('th');
-  th.innerText = hours[i];
-  tr.appendChild(th);
-  var tbody = document.createElement('tbody');
-  table.appendChild(tbody);
-  tbody.id = 'tableBody';
-  var tfoot = document.createElement('tfoot');
-  table.appendChild(tfoot);
-  tfoot.id = 'tableFoot';
-};
-createTable();
 
-function hourlySalesTotal() {
-  var table = document.getElementById("bodyTable");
-  var tfoot = document.getElementById('tableFoot');
-  table.appendChild(tfoot);
-  var tr = document.createElement('tr');
-  tfoot.appendChild(tr);
-  tr.id = 'totalsRow';
-  var th = document.createElement('th');
-  th.innerText = 'Total';
-  tr.appendChild(th);
-  for (var i = 0; i < hours.length - 2; i++) {
-    var hrlyTotal = 0;
-    for (var x = 0; x < storeList.length; x++) {
-      hrlyTotal += storeList[x].salesArray[i];
-    }
-    var footTD = document.createElement('td');
-    footTD.innerText = hrlyTotal;
-    footTD.style.backgroundColor = '#40B27C';
-    tr.appendChild(footTD);
-  }
-  // For adding that last cell of the total of totals
-  var totalTotal = 0;
-  for (var i = 0; i < storeList.length; i++) {
-    totalTotal += storeList[i].total;
-  }
-  var totalTd = document.createElement('td');
-  totalTd.innerText = totalTotal;
-  totalTd.style.backgroundColor = '#40B27C';
-  tr.appendChild(totalTd);
-};
-// hourlyStoresTotal(); // this was in the wrong place
-
-for (var i = 0; i < storeList.length; i++) {
-  storeList[i].generateTableRow();
-}
-hourlyStoresTotal(); // moved it down here, so that it executes AFTER sales are generated above.
-
-var elStoreForm = document.getElementById('newStoreForm');
+var form = document.getElementById('newStoreForm');
 
 function submitButton(event) {
   event.preventDefault();
-  var newStoreForm = event.target;
-  var strLoc = event.target.newStoreName;
-  var minCst = event.target.newMinCust;
-  var maxCst = event.target.newMaxCust;
-  var avgCook = event.target.newAvgCookies;
-  if (minCst > maxCst) {
-    alert('Please double check the number values for accuracy and re-submit the form. Thank you.');
+  var theFormItself = event.target;
+  var storeName = theFormItself.elements['storeName'].value;
+  var minCust = Math.floor(theFormItself.elements['minCust'].value);
+  var maxCust = Math.floor(theFormItself.elements['maxCust'].value);
+  var avgCookies = theFormItself.elements['avgCookies'].value;
+  if(maxCust < minCust){
+    confirm('Please enter a maximum \'sales\' that is more than the minimum \'sales\'');
   } else {
-    var formVariables = new CreateStore(strLoc.value, minCst.value, maxCst.value, avgCook.value);
-    formVariables.generateTableRow();
-    // making sure we add appropriate totals
-    var tfoot = document.getElementById('tableFoot');
-    var totalsRow = document.getElementById('totalsRow');
-    tfoot.removeChild(totalsRow); // first remove the existing totals row
-    hourlyStoresTotal(); // then append a new, updated totals row
+    var userStore = new StoreName(storeName, minCust, maxCust, avgCookies);
+    var table = document.getElementsByTagName('table')[0];
+    var totalRow = document.getElementsByTagName('table')[0];
+    userStore.generateTableRow();
   }
-  elStoreForm.reset();
-}
+  form.reset();
+};
 
-elStoreForm.addEventListener('submit',submitButton);
+form.addEventListener('submit', submitButton);
+var footTr = document.createElement('tr');
+
+function renderFooter(){
+  var footTd = document.createElement('td');
+  footTd.innerText = 'Hourly Sales Totals';
+  footTr.appendChild(footTd);
+  for (var i = 0; j < storeHours.length; i++){
+    var hourlyTotal = 0;
+    for(var j = 0; j < storeList.length; j++){
+      hourlyTotal += storeList[j].salesArr[i];
+    }
+    footTd = document.createElement('td');
+    footTd = innerText = hourlyTotal;
+    footTr = appendChild(footTd);
+  }
+  tbody.appendChild(footTr);
+}
+renderHeader();
+renderFooter();

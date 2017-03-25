@@ -6,25 +6,34 @@
     <link type="text/css" rel="stylesheet" href="styles.css"/>
     <title>Salmon Cookies Sales</title>
   </head>
-  <header>
 
-  </header>
-    <body id="body">
+    <body>
         <section id="salmon">
           <img src="salmon.png" alt="Image of a salmon"/>
         </section>
         <hr id="hrLine"></hr>
-    <form id="newStoreForm">
+    <form action="index.html" method="get" id="newStoreForm">
       <fieldset>
-        <legend>Input New Store Information:</legend>
-        New Store Name: <input type="text" placeholder="Enter Store Name here" name="newStoreName" required><br/>
-        New Minimum Customers per Hour: <input type="text" placeholder="Min customers per hour" name="newMinCust" required><br/>
-        New Maximum Customers per Hour: <input type="text" placeholder="Max customers per hour" name="newMaxCust" required><br/>
-        New Average Sales per Hour: <input type="text" placeholder="Avg cookies sold per hour" name="newAvgSales" required><br/>
-        <button formButton="enter-form" type="submit" value="submit">Submit</button>
+        <h2>Input New Store Information:</h2>
+          <ul>
+            <li>
+              <input type="text" placeholder="Enter Store Name here" name="storeName" id="storeName" required/>
+            </li>
+            <li>
+              <input type="number" placeholder="Min customers per hour" name="minCust" id="minCust" required/>
+            </li>
+            <li>
+              <input type="number" placeholder="Max customers per hour" name="maxCust" id="maxCust" required/>
+            </li>
+            <li><input type="number" placeholder="Avg cookies sold per hour" name="avgCookies" id=avgCookies step="0.01" required>
+            </li>
+            <li>
+              <input type="submit" value="Submit" name="submit" id="submitButton"/>
+            </li>
+          </ul>
       </fieldset>
     </form>
-    <table id="avgSalesTable">
+    <table >
     </table>
     <script src="sales.js"></script>
   </body>
