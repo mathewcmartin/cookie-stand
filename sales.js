@@ -1,8 +1,7 @@
 'use strict';
 
-var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'total'];
-
 var storeList = [];
+var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'total'];
 
 var firstnpike = new StoreName('1st and Pike', 23, 65, 6.3);
 var seatacAirport = new StoreName('SeaTac Airport', 3, 24, 1.2);
@@ -10,266 +9,165 @@ var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
 var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
 var alki = new StoreName('Alki', 2, 16, 4.6);
 
-function StoreName(name, minCust, maxCust, avgSales) {
+var body = document.getElementByTagName('body')[0]; // CHECK D.Lim html ********** why TAG?
+var table = document.createElement('table');
+var tbody = document.createElement('tbody');
+
+function StoreName(name, minCust, maxCust, avgCookies) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
-  this.avgSales = avgSales;
-  this.hourlySalesArr = [];
-  this.randomCust = function(){
+  this.avgCookies = avgCookies;
+  this.salesArr = [];
+  this.randCust = function(){
     return Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust);
   };
   this.storeSales = function() {
     var total = 0;
     for (var i = 0; i < storeHours.length - 1; i++){
-      var cookiesHourly = Math.floor(this.randomCust() * this.avgSales);
-      this.hourlySalesArr.push(cookiesHourly);
+      var cookiesHourly = Math.floor(this.randCust() * this.avgCookies);
+      this.salesArr.push(cookiesHourly);
       total += cookiesHourly;
       console.log(this.cookiesHourly);
     }
-    this.hourlySalesArr.push(total);
-    console.log(this.hourlySalesArr);
+    this.salesArr.push(total);
+    console.log(this.salesArr);
   };
-//  this.storeSales();
-  this.createTblFunc = function(){
-    var body = document.getElementById('body');
-    console.log(body);
-    var table = document.createElement('table');
-    var tbody = document.createElement('tbody');
+  this.generateTableRow = function(){
+    this.storeSales();
     var tr = document.createElement('tr');
-  //    td.innerText = this.name;
+    tbody.appendChild(tr);
+    var tData = document.createElement('td')
+    tr.appendChild(tData);
+    tData.innerText = this.name;
     for (var i = 0; i < storeHours.length; i++){
       var td = document.createElement('td');
-      td.innerText = this.hourlySalesArr[i];
+      td.innerText = this.salesArr[i];
       tr.appendChild(td);
     }
-    tbody.appendChild(tr);
     table.appendChild(tbody);
-    body.appendChild(table);
   };
-  this.storeSales();
-  this.createTblFunc();
   storeList.push(this);
-
 }
 
-/*
-function renderHTML() {
-  var table = document.createElement('table')[0];
+function renderHeader (){
+  var thead = document.createElement('thead');
+  var tr = document.createElement('tr');
+  var blank = document.createElement('th');
+  thead.appendChild(tr);
+  thead.appendChild(blank);
+  table.appendChild(thead);
   body.appendChild(table);
+  blank.innerText = 'Store Name';
+  for (var i = 0; i < storeHours.length; i++){
+    var th = document.createElement('th');
+    th.innerText = storeHours[i]
+    thead.appendChild(th);
+  }
+};
+for (var i = 0; i < storeList.length; i++){
+  storeList[i].generateTableRow();
+}
+// this.newTblRow = function() {
+//   this.storeSales();
+//   var tr = document.createElement('tr');
+//   var tbody = document.getElementById('tbody');
+//   tbody.appendChild(tr);
+//   var newStoreName = document.createElement('th');
+//   newStoreName.innerText = this.name;
+//   tr.appendChild(newStoreName);
+//
+//   for (var i = 0; i < storeHours.length - 2; i++) {
+//     var newTd = document.createElement('td');
+//     newTd.innerText = this.salesArr[i];
+//     tr.appendChild(newTd);
+//   };
+//   storeList.push(this);
+// };
+//appended code from code review. Cite Nick and Michael's work.
+function createTable() {
+  var table = document.createElement('table');
+  .appendChild(table);
+  table.id = 'bodyTable';
   var thead = document.createElement('thead');
   table.appendChild(thead);
-  var tbody = document.createElement('tbody');
-  thead.appendChild(tbody);
   var tr = document.createElement('tr');
-  table.appendChild(tr);
-  var td = document.createElement('td');
-  td.innerText = StoreName;
-  thead.appendChild(td);
-  for(var i = 0; i < storeHours.length; i++) {
-    var tblHead = document.createElement('th');
-    tblHead.innerText = storeHours[i];
-    thead.appendChild(tblHead);
+  thead.appendChild(tr);
+  for (var i = 0; i < hours.length - 1; i++) {
+    var th = document.createElement('th');
+    th.innerText = hours[i];
+    tr.appendChild(th);
   }
-  renderHTML();
-};*/
-var newStoreForm = document.getElementById('newStoreInputForm');
-function newStoreName(event){
+  var th = document.createElement('th');
+  th.innerText = hours[i];
+  tr.appendChild(th);
+  var tbody = document.createElement('tbody');
+  table.appendChild(tbody);
+  tbody.id = 'tableBody';
+  var tfoot = document.createElement('tfoot');
+  table.appendChild(tfoot);
+  tfoot.id = 'tableFoot';
+};
+createTable();
+
+function hourlySalesTotal() {
+  var table = document.getElementById("bodyTable");
+  var tfoot = document.getElementById('tableFoot');
+  table.appendChild(tfoot);
+  var tr = document.createElement('tr');
+  tfoot.appendChild(tr);
+  tr.id = 'totalsRow';
+  var th = document.createElement('th');
+  th.innerText = 'Total';
+  tr.appendChild(th);
+  for (var i = 0; i < hours.length - 2; i++) {
+    var hrlyTotal = 0;
+    for (var x = 0; x < storeList.length; x++) {
+      hrlyTotal += storeList[x].salesArray[i];
+    }
+    var footTD = document.createElement('td');
+    footTD.innerText = hrlyTotal;
+    footTD.style.backgroundColor = '#40B27C';
+    tr.appendChild(footTD);
+  }
+  // For adding that last cell of the total of totals
+  var totalTotal = 0;
+  for (var i = 0; i < storeList.length; i++) {
+    totalTotal += storeList[i].total;
+  }
+  var totalTd = document.createElement('td');
+  totalTd.innerText = totalTotal;
+  totalTd.style.backgroundColor = '#40B27C';
+  tr.appendChild(totalTd);
+};
+// hourlyStoresTotal(); // this was in the wrong place
+
+for (var i = 0; i < storeList.length; i++) {
+  storeList[i].generateTableRow();
+}
+hourlyStoresTotal(); // moved it down here, so that it executes AFTER sales are generated above.
+
+var elStoreForm = document.getElementById('newStoreForm');
+
+function submitButton(event) {
   event.preventDefault();
-  var storeEntryForm = event.target;
-  //Amanda's   var name = event.target.elements.storeName.value;
-  console.log('storeEntryForm');
-  var newStoreName = storeEntryForm.elements['formButton'].value;
-  //var name = event.target.elements.minCust.value
-  console.log('newStoreForm logic');
-  var newMinCustValues = storeEntryForm.elements['minCust'].value;
-  var newMaxCustValues = storeEntryForm.elements['maxCust'].value;
-  var newAvgSalesValues = storeEntryForm.elements['avgSales'].value;
-  form.reset();
-  button.addEventListener('submit', newStoreName);
-}
-//var newStoreName = event.target
-
-document.getElementsByTagName('newStoreName');
-document.getElementsByTagName('newMinCust');
-document.getElementsByTagName('newMaxCust');
-document.getElementsByTagName('newAvgSales');
-/*
-
-event.addEventListener('submit', newStoreName);
-
-var newStoreForm = form.getElementById('newStoreInputForm');
-function newStoreName(event){
-  event.preventDefault();
-  var storeEntryForm = event.target;
-  console.log(storeEntryForm);
-  var newStoreName = storeEntryForm.elements['name'].value;
-  console.log(newStoreName);
-  var newMinCustValues = storeEntryForm.elements['minCust'].value;
-  var newMaxCustValues = storeEntryForm.elements['maxCust'].value;
-  var newAvgSalesValues = storeEntryForm.elements['avgSales'].value;
-  form.getElementById('newStoreInputForm').reset();
-}
-newStoreForm.addEventListener('submit', newStoreName);
-  /*
-name, minCust, maxCust, avgSales
-'use strict';
-
-var form = form.getElementById('the-form');
-function alertTheUser(event){
-  event.preventDefault(); // stops the form from submitting and leaving the page.
-  // time for the harvest
-  var theFormItself = event.target;
-  // the "elements" attribute of the event.target object holds (for a form) all of the form fields by name
-  console.log(theFormItself.elements['firstname'].value);
-};
-form.addEventListener('submit', alertTheUser);
-
-var firstname = form.getElementById('firstname');
-function capitalizeEverything(event){
-  // var theText = this.value;
-  this.value = "You've focused on me!";
-  console.log(this);
-  console.log(event.target);
-}
-firstname.addEventListener('focus', capitalizeEverything);
-
-  form.getElementById('newStoreName')
-  form.getElementById('newMinCust')
-  form.getElementById('newMaxCust')
-  form.getElementById('newAvgSales')
+  var newStoreForm = event.target;
+  var strLoc = event.target.newStoreName;
+  var minCst = event.target.newMinCust;
+  var maxCst = event.target.newMaxCust;
+  var avgCook = event.target.newAvgCookies;
+  if (minCst > maxCst) {
+    alert('Please double check the number values for accuracy and re-submit the form. Thank you.');
+  } else {
+    var formVariables = new CreateStore(strLoc.value, minCst.value, maxCst.value, avgCook.value);
+    formVariables.generateTableRow();
+    // making sure we add appropriate totals
+    var tfoot = document.getElementById('tableFoot');
+    var totalsRow = document.getElementById('totalsRow');
+    tfoot.removeChild(totalsRow); // first remove the existing totals row
+    hourlyStoresTotal(); // then append a new, updated totals row
+  }
+  elStoreForm.reset();
 }
 
-form.getElementById('form1').addEventListener('submit', function(evt){
-    evt.preventDefault();
-
-/*
-var firstnpike = new StoreName('1st and Pike', 23, 65, 6.3);
-var seatacAirport = new StoreName('SeaTac Airport', 3, 24, 1.2);
-var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
-var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
-var alki = new StoreName('Alki', 2, 16, 4.6);
-
-firstnpike.createListItems();
-seatacAirport.createListItems();
-seattleCenter.createListItems();
-capitolHill.createListItems();
-alki.createListItems();
-
-var seatacAirport = {
-  storeName: 'SeaTac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgSales: 1.2,
-  hourlySales: [],
-  randomCust: function(){
-    return Math.floor(Math.random() * ((this.maxCust - this.minCust + 1) + this.minCust));
-  },
-  storeSales: function(){
-    var total = 0;
-    for (var i = 0; i < storeHours.length - 1; i++) {
-      this.hourlySales.push(Math.ceil(this.randomCust() * this.avgSales));
-      console.log('sales is: ' + this.hourlySales);
-      total = total + this.hourlySales[i];
-      console.log('total is: ' + total);
-    }
-  }
-};
-var body = form.getElementsByTagName('body')[0];
-var firstList = form.createElement('ul');
-var seatacAirportHourly = seatacAirport.storeSales();
-console.log(seatacAirportHourly);
-for (var i = 0; i < storeHours.length; i++){
-  var firstlistItem = form.createElement('li');
-  firstlistItem.textContent = seatacAirport[1];
-};
-body.appendChild(firstList);
-
-var seattleCenter = {
-  storeName: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgSales: 3.7,
-  hourlySales: [],
-  randomCust: function(){
-    return Math.floor(Math.random() * ((this.maxCust - this.minCust + 1) + this.minCust));
-  },
-  storeSales: function(){
-    var total = 0;
-    for (var i = 0; i < storeHours.length - 1; i++) {
-      this.hourlySales.push(Math.ceil(this.randomCust() * this.avgSales));
-      console.log('sales is: ' + this.hourlySales);
-      total = total + this.hourlySales[i];
-      console.log('total is: ' + total);
-    }
-  }
-};
-var body = form.getElementsByTagName('body')[0];
-var firstList = form.createElement('ul');
-var seattleCenterHourly = seattleCenter.storeSales();
-console.log(seattleCenterHourly);
-for (var i = 0; i < storeHours.length; i++){
-  var firstlistItem = form.createElement('li');
-  firstlistItem.textContent = seattleCenter[1];
-};
-body.appendChild(firstList);
-
-var capitolHill = {
-  storeName: 'Capitol Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgSales: 2.3,
-  hourlySales: [],
-  randomCust: function(){
-    return Math.floor(Math.random() * ((this.maxCust - this.minCust + 1) + this.minCust));
-  },
-  storeSales: function(){
-    var total = 0;
-    for (var i = 0; i < storeHours.length - 1; i++) {
-      this.hourlySales.push(Math.ceil(this.randomCust() * this.avgSales));
-      console.log('sales is: ' + this.hourlySales);
-      total = total + this.hourlySales[i];
-      console.log('total is: ' + total);
-    }
-  }
-};
-var body = form.getElementsByTagName('body')[0];
-var firstList = form.createElement('ul');
-var capitolHillHourly = capitolHill.storeSales();
-console.log(capitolHillHourly);
-for (var i = 0; i < storeHours.length; i++){
-  var firstlistItem = form.createElement('li');
-  firstlistItem.textContent = capitolHill[1];
-};
-body.appendChild(firstList);
-
-var alki = {
-  storeName: 'Alki',
-  minCust: 2,
-  maxCust: 16,
-  avgSales: 4.6,
-  hourlySales: [],
-  randomCust: function(){
-    return Math.floor(Math.random() * ((this.maxCust - this.minCust + 1) + this.minCust));
-  },
-  storeSales: function(){
-    var total = 0;
-    for (var i = 0; i < storeHours.length - 1; i++) {
-      this.hourlySales.push(Math.ceil(this.randomCust() * this.avgSales));
-      console.log('sales is: ' + this.hourlySales);
-      total = total + this.hourlySales[i];
-      console.log('total is: ' + total);
-    }
-  }
-};
-var body = form.getElementsByTagName('body')[0];
-var firstList = form.createElement('ul');
-var alkiHourly = alki.storeSales();
-console.log(alkiHourly);
-for (var i = 0; i < storeHours.length; i++){
-  var firstlistItem = form.createElement('li');
-  firstlistItem.textContent = alki[1];
-};
-form.body.appendChild(firstList);
-
-*/
+elStoreForm.addEventListener('submit',submitButton);
