@@ -3,18 +3,18 @@
 var storeList = [];
 var storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'total'];
 
-var firstnpike = new StoreName('1st and Pike', 23, 65, 6.3);
-var seatacAirport = new StoreName('SeaTac Airport', 3, 24, 1.2);
-var seattleCenter = new StoreName('Seattle Center', 11, 38, 3.7);
-var capitolHill = new StoreName('Capitol Hill', 20, 38, 2.3);
-var alki = new StoreName('Alki', 2, 16, 4.6);
+var firstnpike = new Store('1st and Pike', 23, 65, 6.3);
+var seatacAirport = new Store('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
+var capitolHill = new Store('Capitol Hill', 20, 38, 2.3);
+var alki = new Store('Alki', 2, 16, 4.6);
 
 var body = document.getElementsByTagName('body')[0]; // CHECK D.Lim html ********** why TAG?
 var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
-function StoreName(name, minCust, maxCust, avgCookies) {
-  this.name = name;
+function Store(storeName, minCust, maxCust, avgCookies) {
+  this.name = storeName;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookies = avgCookies;
@@ -77,12 +77,11 @@ function submitButton(event) {
   var minCust = Math.floor(theFormItself.elements['minCust'].value);
   var maxCust = Math.floor(theFormItself.elements['maxCust'].value);
   var avgCookies = theFormItself.elements['avgCookies'].value;
-  if(maxCust < minCust){
-    confirm('Please enter a maximum \'sales\' that is more than the minimum \'sales\'');
+  if (maxCust < minCust) {
+    confirm('Max number of customers should be greater than the minimum number. Please correct and resubmit');
   } else {
-    var userStore = new StoreName(storeName, minCust, maxCust, avgCookies);
+    var userStore = new Store(storeName, minCust, maxCust, avgCookies);
     var table = document.getElementsByTagName('table')[0];
-    var totalRow = document.getElementsByTagName('table')[0];
     userStore.generateTableRow();
   }
   form.reset();
@@ -93,9 +92,9 @@ var footTr = document.createElement('tr');
 
 function renderFooter(){
   var footTd = document.createElement('td');
-  footTd.innerText = 'Hourly Sales Totals';
+  footTd.innerText = 'Hourly Totals';
   footTr.appendChild(footTd);
-  for (var i = 0; j < storeHours.length; i++){
+  for (var i = 0; i < storeHours.length; i++){
     var hourlyTotal = 0;
     for(var j = 0; j < storeList.length; j++){
       hourlyTotal += storeList[j].salesArr[i];
