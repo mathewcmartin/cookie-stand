@@ -6,37 +6,38 @@
     <link type="text/css" rel="stylesheet" href="styles.css"/>
     <title>Salmon Cookies Sales</title>
   </head>
-
-    <body>
-        <section id="salmon">
-          <img src="salmon.png" alt="Image of a salmon"/>
-        </section>
-        <hr id="hrLine"></hr>
-    <form action="index.html" method="get" id="newStoreForm">
-      <fieldset>
-        <h2>Input New Store Information:</h2>
-          <ul>
-            <li>
-              <input type="text" placeholder="Enter Store Name here" name="storeName" id="storeName" required/>
-            </li>
-            <li>
-              <input type="number" placeholder="Min customers per hour" name="minCust" id="minCust" required/>
-            </li>
-            <li>
-              <input type="number" placeholder="Max customers per hour" name="maxCust" id="maxCust" required/>
-            </li>
-            <li><input type="number" placeholder="Avg cookies sold per hour" name="avgCookies" id=avgCookies step="0.01" required>
-            </li>
-            <li>
-              <input type="submit" value="Submit" name="submit" id="submitButton"/>
-            </li>
-          </ul>
-      </fieldset>
-    </form>
-    <table >
-    </table>
-    <script src="sales.js"></script>
-  </body>
+  <body>
+      <section id="salmon">
+        <img src="salmon.png" alt="Image of a salmon"/>
+      </section>
+      <section>
+        <p>Salmon Cookies</p>
+      </section>
+      <hr id="hrLine"></hr>
+  <form action="index.html" method="get" id="newStoreForm">
+    <fieldset>
+      <h2>Input New Store Information:</h2>
+      <ul>
+        <li>
+          <input type="text" placeholder="Enter Store Name here" name="storeName" id="storeName" required/><a>New Store Name</a>
+        </li>
+        <li>
+          <input type="number" placeholder="Min customers per hour" name="minCust" id="minCust" required/><a>Minimum Customers per hour</a>
+        </li>
+        <li>
+          <input type="number" placeholder="Max customers per hour" name="maxCust" id="maxCust" required/><a>Maximum Customers per hour</a>
+        </li>
+        <li>
+          <input type="number" placeholder="Avg cookies sold per hour" name="avgCookies" id="avgCookies" step="0.01" required><a>Average Cookies Sold per hour</a>
+        </li>
+        <li>
+          <input type="submit" value="Submit" name="submit" id="submitButton"/>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+  <script src="sales.js"></script>
+</body>
   <footer>
   </footer>
 </html>

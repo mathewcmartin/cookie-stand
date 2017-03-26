@@ -8,8 +8,25 @@ html {
 }
 header {
 }
+h1 {
+font-family: cursive, sans-serif;
+font-size: 2em;
+/*text-align: center;*/
+max-width: 100%;
+}
+p {
+  text-align: center;
+  text-decoration: underline;
+  font-style: italic;
+  font-family: cursive, sans-serif;
+  max-width: 100%;
+  margin-right: 15%;
+}
+h2 {
+  font-size: .9em;
+}
 section {
-  margin-left: 15%;
+  margin-left: 10%;
 }
 #salmon {
   max-width: 75%;
@@ -42,9 +59,9 @@ table {
   table-layout: fixed;
   border-spacing: 0.5rem;
   border-collapse: collapse;
-  margin-left: 20%;
+  /*margin-left: 20%;*/
   margin-top: 1px;
-  width: 65%;
+  width: 100%;
   vertical-align: bottom;
   height: 35px;
   padding: 30px;
@@ -53,6 +70,7 @@ table {
   font-size: .7em;
   border-color: #000;
   clear: both;
+
 }
 tbody {
   display: table-row-group;
@@ -76,7 +94,10 @@ tr {
   border-color: inherit;
 }
 col {
+  /*white-space: nowrap;*/
   display: table-column;
+  width: auto;
+  /*padding: 10px;*/
 }
 colgroup {
   display: table-column-group;
@@ -94,7 +115,7 @@ td {
   padding: 10px;
 }
 #hrLine {
-  margin-left: 15%;
+  margin-left: 10%;
   height: 35px;
   max-width: 75%;
   background: rgb(254,187,187); /* Old browsers */
@@ -110,17 +131,28 @@ td {
 }
 form {
   font-family: cursive, sans-serif;
-  margin-left: 37.5%;
+  padding: 10px;
+  margin-left: 35%;
   margin-top: 30px;
   margin-bottom: 25px;
   font:100%/1 cursive, sans-serif;
 }
+ul {
+  padding: 5px;
+}
+li {
+  padding: 1%;
+}
+a {
+  font-size: .7rem;
+}
 #newStoreForm {
-    font:100%/1 cursive, sans-serif;
-    font-family: cursive, sans-serif;
+  font-size: 1rem;
+  font-family: cursive, sans-serif;
+  padding: 5px;
 }
 fieldset {
-  padding: 1em;
+  /*padding: 1rem;*/
   font:100%/1 cursive, sans-serif;
   }
 button {
@@ -129,8 +161,8 @@ button {
 label {
   float:left;
   width:25%;
-  margin-right:0.5em;
-  padding-top:0.2em;
+  margin-right:0.5rem;
+  padding-top:0.2rem;
   text-align:right;
   font-weight:bold;
   font:100%/1 cursive, sans-serif;
@@ -154,13 +186,7 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-h1{
-  padding-top: 100px;
-  font-size:4em;
-  text-align: center;
-  margin: 0.67em 0;
-  font-family: 'Rubik Mono One', sans-serif;
-  margin: 10px;
+
 }
 
 h4{
