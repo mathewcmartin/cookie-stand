@@ -2,21 +2,25 @@
 html {
   background: -moz-linear-gradient(top,  #febbbb 0%, #fe9090 45%, #ff5c5c 100%); /* FF3.6-15 */
 /*  background: -webkit-linear-gradient(top,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%); /* Chrome10-25,Safari5.1-6 */
-  /*background: linear-gradient(to bottom,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */*/
-  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=0 ); /* IE6-9 */*/
+  /*background: linear-gradient(to bottom,  #febbbb 0%,#fe9090 45%,#ff5c5c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=0 ); /* IE6-9 */
   /*background-repeat: no-repeat;*/
 }
 header {
 }
+#chinook {
+  /*float: left;*/
+  margin-right: 15%;
+}
 h1 {
 font-family: cursive, sans-serif;
 font-size: 2em;
-/*text-align: center;*/
+text-align: center;
 max-width: 100%;
 }
 p {
   text-align: center;
-  text-decoration: underline;
+  text-decoration: none;
   font-style: italic;
   font-family: cursive, sans-serif;
   max-width: 100%;
@@ -24,12 +28,13 @@ p {
 }
 h2 {
   font-size: .9em;
+  text-align: center;
 }
 section {
   margin-left: 10%;
 }
 #salmon {
-  max-width: 75%;
+  max-width: 100%;
   background: rgb(252,255,244);
   background: -moz-radial-gradient(center, ellipse cover,  rgba(252,255,244,1) 0%, rgba(223,229,215,1) 40%, rgba(179,190,173,1) 100%);
   background: -webkit-radial-gradient(center, ellipse cover,  rgba(252,255,244,1) 0%,rgba(223,229,215,1) 40%,rgba(179,190,173,1) 100%);
@@ -37,17 +42,62 @@ section {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead',GradientType=1 );
 }
 fieldset {
-  max-width: 75%;
+  max-width: 100%;
 }
 img {
-  max-width: 75%;
+  max-width: 100%;
   margin-left: 12.5%;
 }
 body {
   font-family: cursive, sans-serif;
   max-width: 90%;
   height: auto;
-  border: 2px
+}
+#hrLine {
+  margin-left: 10%;
+  height: auto;
+  max-width: 100%;
+  background: rgb(254,187,187); /* Old browsers */
+  background: -moz-linear-gradient(45deg,  rgba(254,187,187,1) 0%, rgba(254,144,144,1) 45%, rgba(255,92,92,1) 100%);
+  background: -webkit-linear-gradient(45deg,  rgba(254,187,187,1) 0%,rgba(254,144,144,1) 45%,rgba(255,92,92,1) 100%);
+  background: linear-gradient(45deg,  rgba(254,187,187,1) 0%,rgba(254,144,144,1) 45%,rgba(255,92,92,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 );
+}
+#tempBookmark-1 {
+  text-align: center;
+  max-width: 100%;
+  height: 100px;
+}
+fieldset {
+  /*padding: 1rem;*/
+  font:100%/1 cursive, sans-serif;
+}
+button {
+  font:100%/1 cursive, sans-serif;
+}
+form {
+  font-family: cursive, sans-serif;
+  padding: 13%;
+  margin-left: 20%;
+  margin-right: 10%;
+  /*margin-top: 30px;*/
+  /*margin-bottom: 25px;*/
+  font:100%/1 cursive, sans-serif;
+}
+ul {
+  padding: 2%;
+  list-style: none;
+}
+li {
+  padding: 1%;
+}
+a {
+  font-size: .7rem;
+}
+#newStoreForm {
+  font-size: 1rem;
+  font-family: cursive, sans-serif;
+  padding: 5px;
 }
 table {
   background: -webkit-linear-gradient(#febbbb 0%, #fe9090 45%, #ff5c5c 100%);
@@ -59,9 +109,9 @@ table {
   table-layout: fixed;
   border-spacing: 0.5rem;
   border-collapse: collapse;
-  /*margin-left: 20%;*/
+  margin-left: 20%;
   margin-top: 1px;
-  width: 100%;
+  width: 70%;
   vertical-align: bottom;
   height: 35px;
   padding: 30px;
@@ -113,50 +163,6 @@ td {
   vertical-align: bottom;
   border: 1px solid #999;
   padding: 10px;
-}
-#hrLine {
-  margin-left: 10%;
-  height: 35px;
-  max-width: 75%;
-  background: rgb(254,187,187); /* Old browsers */
-  background: -moz-linear-gradient(45deg,  rgba(254,187,187,1) 0%, rgba(254,144,144,1) 45%, rgba(255,92,92,1) 100%);
-  background: -webkit-linear-gradient(45deg,  rgba(254,187,187,1) 0%,rgba(254,144,144,1) 45%,rgba(255,92,92,1) 100%);
-  background: linear-gradient(45deg,  rgba(254,187,187,1) 0%,rgba(254,144,144,1) 45%,rgba(255,92,92,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#febbbb', endColorstr='#ff5c5c',GradientType=1 );
-}
-#tempBookmark-1 {
-  text-align: center;
-  max-width: 100%;
-  height: 100px;
-}
-form {
-  font-family: cursive, sans-serif;
-  padding: 10px;
-  margin-left: 35%;
-  margin-top: 30px;
-  margin-bottom: 25px;
-  font:100%/1 cursive, sans-serif;
-}
-ul {
-  padding: 5px;
-}
-li {
-  padding: 1%;
-}
-a {
-  font-size: .7rem;
-}
-#newStoreForm {
-  font-size: 1rem;
-  font-family: cursive, sans-serif;
-  padding: 5px;
-}
-fieldset {
-  /*padding: 1rem;*/
-  font:100%/1 cursive, sans-serif;
-  }
-button {
-  font:100%/1 cursive, sans-serif;
 }
 label {
   float:left;

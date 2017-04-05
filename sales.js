@@ -9,7 +9,7 @@ var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store('Capitol Hill', 20, 38, 2.3);
 var alki = new Store('Alki', 2, 16, 4.6);
 
-var body = document.getElementsByTagName('body')[0]; // CHECK D.Lim html ********** why TAG?
+var body = document.getElementsByTagName('body')[0];
 var table = document.createElement('table');
 var tbody = document.createElement('tbody');
 
@@ -88,6 +88,7 @@ function submitButton(event) {
 };
 
 form.addEventListener('submit', submitButton);
+
 var footTr = document.createElement('tr');
 
 function renderFooter(){
