@@ -82,6 +82,7 @@ function submitButton(event) {
   } else {
     var userStore = new Store(storeName, minCust, maxCust, avgCookies);
     var table = document.getElementsByTagName('table')[0];
+    var totalsRow = document.getElementsByTagName('table')[0];
     userStore.generateTableRow();
   }
   form.reset();
@@ -101,8 +102,8 @@ function renderFooter(){
       hourlyTotal += storeList[j].salesArr[i];
     }
     footTd = document.createElement('td');
-    footTd = innerText = hourlyTotal;
-    footTr = appendChild(footTd);
+    footTd.innerText = hourlyTotal;
+    footTr.appendChild(footTd);
   }
   tbody.appendChild(footTr);
 }
